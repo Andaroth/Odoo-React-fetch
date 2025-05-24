@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mohamed-helmy/Odoo-React.git"
+    "url": "git+https://github.com/Andaroth/Odoo-React-fetch.git"
   },
   "keywords": [
     "odoo",
@@ -19,10 +19,7 @@
   "author": "Mohamed Helmy",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/mohamed-helmy/Odoo-React/issues"
+    "url": "https://github.com/Andaroth/Odoo-React-fetch/issues"
   },
-  "homepage": "https://github.com/mohamed-helmy/Odoo-React#readme",
-  "dependencies": {
-    "axios": "^0.21.1"
-  }
+  "homepage": "https://github.com/Andaroth/Odoo-React-fetch#readme",
 }
