@@ -1,5 +1,4 @@
 "use strict";
-const axios = require("axios").default;
 var Odoo = function (config) {
   config = config || {};
   this.host = config.host;
@@ -25,12 +24,10 @@ Odoo.prototype.authenticate = function (cb) {
       Accept: "application/json",
       "Content-Length": body.length,
     },
-    data: body,
-    withCredentials: false,
-    baseURL: this.host + ":" + this.port,
-    url: "/web/session/authenticate",
+    body,
+    credentials: 'include',
   };
-  axios(requestConfig).then(
+  fetch(this.host + ":" + this.port + "/web/session/authenticate", ...requestConfig).then(
     (response) => {
       console.log(response);
       if (response.data.error) {
@@ -155,18 +152,16 @@ Odoo.prototype._request = function (path, params, cb) {
   var requestConfig = {
     method: "POST",
     headers: headers,
-    data: JSON.stringify({
+    body: JSON.stringify({
       jsonrpc: "2.0",
       id: new Date().getUTCMilliseconds(),
       method: "call",
       params: params,
     }),
-    withCredentials: false,
-    baseURL: this.host + ":" + this.port,
-    url: (path || "/") + "",
+    credentials: 'include',
   };
 
-  axios(requestConfig).then(
+  fetch(this.host + ":" + this.port + path || "/", ...requestConfig).then(
     (response) => {
       if (response.data.error) {
         cb(response.data.error, null);
